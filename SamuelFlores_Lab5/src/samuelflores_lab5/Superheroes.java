@@ -76,10 +76,11 @@ public class Superheroes {
     public void setAgilidadmental(String agilidadmental) {
         this.agilidadmental = agilidadmental;
     }
+    
 
     @Override
     public String toString() {
-        return "Superheroes{" + "nombre=" + nombre + ", poder=" + poder + ", debilidad=" + debilidad + ", escuadron=" + escuadron + ", fuerza=" + fuerza + ", agilidadfisica=" + agilidadfisica + ", agilidadmental=" + agilidadmental + '}';
+        return "Nombre: "+nombre+" Poder: "  + poder ;
     }
     
 }
