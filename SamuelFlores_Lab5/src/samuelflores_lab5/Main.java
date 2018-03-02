@@ -496,8 +496,6 @@ public class Main extends javax.swing.JFrame {
         String opcion,personaje;
         opcion=cb_opcion.getSelectedItem().toString();
         personaje=cb_personajes.getSelectedItem().toString();
-        System.out.println(opcion);
-        System.out.println(personaje);
         if(opcion.equals("Modificar")){
             if(personaje.equals("SuperHeroes")){
                 String salida = "";
@@ -520,21 +518,103 @@ public class Main extends javax.swing.JFrame {
                         + "g- Escuadron ");
                switch(op){
                    case "a":
-                       String nombre = JOptionPane.showInputDialog("Ingrese el nuevo nombre: ");
-                       
-                       
+                       String salida1 = "";
+                       for (Object temp : superheroes.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida1 += superheroes.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida1 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida1);
+                       String opc1 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci1 = Integer.parseInt(opc1);
+                       String nombre = JOptionPane.showInputDialog("Ingrese el nombre: ");
+                       ((Superheroes)superheroes.get(opci).getMiembro().get(opci1)).setNombre(nombre);
                        break;
                    case "b":
+                       String salida2 = "";
+                       for (Object temp : superheroes.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida2 += superheroes.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida2 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida2);
+                       String opc2 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci2 = Integer.parseInt(opc2);
+                       String poder = JOptionPane.showInputDialog("Ingrese el poder: ");
+                       ((Superheroes)superheroes.get(opci).getMiembro().get(opci2)).setPoder(poder);
                        break;
                    case "c":
+                       String salida3 = "";
+                       for (Object temp : superheroes.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida3 += superheroes.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida3 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida3);
+                       String opc3 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci3 = Integer.parseInt(opc3);
+                       String debilidad = JOptionPane.showInputDialog("Ingrese la debilidad: ");
+                       ((Superheroes)superheroes.get(opci).getMiembro().get(opci3)).setDebilidad(debilidad);
                        break;
                    case "d":
+                       String salida4 = "";
+                       for (Object temp : superheroes.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida4 += superheroes.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida4 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida4);
+                       String opc4 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci4 = Integer.parseInt(opc4);
+                       String fuerza = JOptionPane.showInputDialog("Ingrese la fuerza: ");
+                       ((Superheroes)superheroes.get(opci).getMiembro().get(opci4)).setFuerza(fuerza);
+                       
                        break;
                    case "e":
+                        String salida5 = "";
+                       for (Object temp : superheroes.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida5 += superheroes.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida5 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida5);
+                       String opc5 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci5 = Integer.parseInt(opc5);
+                       String agilidadfisica = JOptionPane.showInputDialog("Ingrese su agilidad fisica: ");
+                       ((Superheroes)superheroes.get(opci).getMiembro().get(opci5)).setAgilidadfisica(agilidadfisica);
                        break;
                    case "f":
+                        String salida6 = "";
+                       for (Object temp : superheroes.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida6 += superheroes.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida6 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida6);
+                       String opc6 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci6 = Integer.parseInt(opc6);
+                       String agilidadmental = JOptionPane.showInputDialog("Ingrese su agilidad mental: ");
+                       ((Superheroes)superheroes.get(opci).getMiembro().get(opci6)).setAgilidadmental(agilidadmental);
                        break;
                    case "g":
+                        String salida7 = "";
+                       for (Object temp : superheroes.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida7 += superheroes.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida7 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida7);
+                       String opc7 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci7 = Integer.parseInt(opc7);
+                       String escuadron = JOptionPane.showInputDialog("Ingrese su nuevo escuadron: ");
+                       ((Superheroes)superheroes.get(opci).getMiembro().get(opci7)).setEscuadron(escuadron);
                        break;
                }
                 
@@ -547,6 +627,8 @@ public class Main extends javax.swing.JFrame {
                     }
                 }
                 JOptionPane.showMessageDialog(null, salida);
+                String opc = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                int opci= Integer.parseInt(opc);
                 String op=JOptionPane.showInputDialog("Modificar Villanos\n"
                         + "a- Nombre\n"
                         + "b- Poder\n"
@@ -555,28 +637,157 @@ public class Main extends javax.swing.JFrame {
                         + "e- Agilidad Fisica \n"
                         + "f- Agilidad Mental\n"
                         + "g- Escuadron ");
-                switch(op){
+                 switch(op){
                    case "a":
+                       String salida1 = "";
+                       for (Object temp : villanos.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida1 += villanos.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida1 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida1);
+                       String opc1 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci1 = Integer.parseInt(opc1);
+                       String nombre = JOptionPane.showInputDialog("Ingrese el nombre: ");
+                       ((Villanos)villanos.get(opci).getMiembro().get(opci1)).setNombre(nombre);
                        break;
                    case "b":
+                       String salida2 = "";
+                       for (Object temp : villanos.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida2 += villanos.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida2 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida2);
+                       String opc2 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci2 = Integer.parseInt(opc2);
+                       String poder = JOptionPane.showInputDialog("Ingrese el poder: ");
+                       ((Villanos)villanos.get(opci).getMiembro().get(opci2)).setPoder(poder);
                        break;
                    case "c":
+                       String salida3 = "";
+                       for (Object temp : villanos.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida3 += villanos.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida3 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida3);
+                       String opc3 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci3 = Integer.parseInt(opc3);
+                       String debilidad = JOptionPane.showInputDialog("Ingrese la debilidad: ");
+                       ((Villanos)villanos.get(opci).getMiembro().get(opci3)).setDebilidad(debilidad);
                        break;
                    case "d":
+                       String salida4 = "";
+                       for (Object temp : villanos.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida4 += villanos.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida4 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida4);
+                       String opc4 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci4 = Integer.parseInt(opc4);
+                       String fuerza = JOptionPane.showInputDialog("Ingrese la fuerza: ");
+                       ((Villanos)villanos.get(opci).getMiembro().get(opci4)).setFuerza(fuerza);
+                       
                        break;
                    case "e":
+                        String salida5 = "";
+                       for (Object temp : villanos.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida5 += villanos.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida5 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida5);
+                       String opc5 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci5 = Integer.parseInt(opc5);
+                       String agilidadfisica = JOptionPane.showInputDialog("Ingrese su agilidad fisica: ");
+                       ((Villanos)villanos.get(opci).getMiembro().get(opci5)).setAgilidadfisica(agilidadfisica);
                        break;
                    case "f":
+                        String salida6 = "";
+                       for (Object temp : villanos.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida6 += villanos.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida6 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida6);
+                       String opc6 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci6 = Integer.parseInt(opc6);
+                       String agilidadmental = JOptionPane.showInputDialog("Ingrese su agilidad mental: ");
+                       ((Villanos)villanos.get(opci).getMiembro().get(opci6)).setAgilidadmental(agilidadmental);
                        break;
                    case "g":
+                        String salida7 = "";
+                       for (Object temp : villanos.get(opci).getMiembro()) {
+                           if (temp instanceof Object) {
+                               salida7 += villanos.get(opci).getMiembro().indexOf(temp) + " ";
+                               salida7 += temp + "\n";
+                           }
+                       }
+                       JOptionPane.showMessageDialog(null, salida7);
+                       String opc7 = JOptionPane.showInputDialog("Ingrese la posicion que desea modificar: ");
+                       int opci7 = Integer.parseInt(opc7);
+                       String escuadron = JOptionPane.showInputDialog("Ingrese su nuevo escuadron: ");
+                       ((Villanos)villanos.get(opci).getMiembro().get(opci7)).setEscuadron(escuadron);
                        break;
                }
                 
             }
         }else if(opcion.equals("Eliminar")){
-            if(personaje.equals("SuperHeroes")){
+            if (personaje.equals("SuperHeroes")) {
+                String salida = "";
+                for (Object temp : superheroes) {
+                    if (temp instanceof Object) {
+                        salida += superheroes.indexOf(temp) + " ";
+                        salida += temp + "\n";
+                    }
+                }
+                JOptionPane.showMessageDialog(null, salida);
+                String opc = JOptionPane.showInputDialog("Ingrese la posicion desea ir: ");
+                int opci = Integer.parseInt(opc);
+                String salida1 = "";
+                for (Object temp : superheroes.get(opci).getMiembro()) {
+                    if (temp instanceof Object) {
+                        salida1 += superheroes.get(opci).getMiembro().indexOf(temp) + " ";
+                        salida1 += temp + "\n";
+                    }
+                }
+                JOptionPane.showMessageDialog(null, salida1);
+                String opc1 = JOptionPane.showInputDialog("Ingrese la posicion que desea eliminar: ");
+                int opci1 = Integer.parseInt(opc1);
+                superheroes.get(opci).getMiembro().remove(opci1);
+                
+                
                 
             }else if(personaje.equals("Villanos")){
+                String salida = "";
+                for (Object temp : villanos) {
+                    if (temp instanceof Object) {
+                        salida += villanos.indexOf(temp) + " ";
+                        salida += temp + "\n";
+                    }
+                }
+                JOptionPane.showMessageDialog(null, salida);
+                String opc = JOptionPane.showInputDialog("Ingrese la posicion desea ir: ");
+                int opci= Integer.parseInt(opc);
+                String salida1 = "";
+                for (Object temp : villanos.get(opci).getMiembro()) {
+                    if (temp instanceof Object) {
+                        salida1 += villanos.get(opci).getMiembro().indexOf(temp) + " ";
+                        salida1 += temp + "\n";
+                    }
+                }
+                JOptionPane.showMessageDialog(null, salida1);
+                String opc1 = JOptionPane.showInputDialog("Ingrese la posicion que desea eliminar: ");
+                int opci1 = Integer.parseInt(opc1);
+                villanos.get(opci).getMiembro().remove(opci1);
                 
             }
         }
