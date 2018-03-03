@@ -70,6 +70,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jt_tree = new javax.swing.JTree();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jd_modificaryeliminar = new javax.swing.JDialog();
         cb_opcion = new javax.swing.JComboBox();
         cb_personajes = new javax.swing.JComboBox();
@@ -310,10 +311,17 @@ public class Main extends javax.swing.JFrame {
         jt_tree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane3.setViewportView(jt_tree);
 
-        jButton4.setText("Agregar al arbol");
+        jButton4.setText("Agregar los superheroes");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
+            }
+        });
+
+        jButton5.setText("Agregar los villanos");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
             }
         });
 
@@ -321,15 +329,15 @@ public class Main extends javax.swing.JFrame {
         jd_arbol.getContentPane().setLayout(jd_arbolLayout);
         jd_arbolLayout.setHorizontalGroup(
             jd_arbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_arbolLayout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addGroup(jd_arbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_arbolLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_arbolLayout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(53, 53, 53))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_arbolLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_arbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jd_arbolLayout.createSequentialGroup()
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton4))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44))
         );
         jd_arbolLayout.setVerticalGroup(
             jd_arbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,7 +345,9 @@ public class Main extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addGroup(jd_arbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -867,15 +877,41 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-        DefaultTreeModel m = (DefaultTreeModel) jt_tree.getModel();
-        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
-        for (int i = 0; i < superheroes.size(); i++) {
+        DefaultMutableTreeNode raiz=null;
+        int i=0;
+        int j=0;
+        for ( i = 0; i < superheroes.size(); i++) {
+            DefaultTreeModel m = (DefaultTreeModel) jt_tree.getModel();
+            raiz = (DefaultMutableTreeNode) m.getRoot();
             raiz.add(new DefaultMutableTreeNode(superheroes.get(i).getNombre()+" Superheroe"));
-        }
-        for (int i = 0; i < villanos.size(); i++) {
+            for ( j = 0; j < superheroes.get(i).getMiembro().size(); j++) {
+                DefaultMutableTreeNode per = (DefaultMutableTreeNode)raiz.getChildAt(i);
+                per.add(new DefaultMutableTreeNode(((Superheroes)superheroes.get(i).getMiembro().get(j)).getNombre()));
+                DefaultMutableTreeNode pod = (DefaultMutableTreeNode)per.getChildAt(j);
+                pod.add(new DefaultMutableTreeNode(((Superheroes)superheroes.get(i).getMiembro().get(j)).getPoder()));
+            }
+            m.reload();
             
         }
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        DefaultMutableTreeNode raiz=null;
+        for (int i = 0; i < villanos.size(); i++) {
+            DefaultTreeModel m = (DefaultTreeModel) jt_tree.getModel();
+            raiz = (DefaultMutableTreeNode) m.getRoot();
+            raiz.add(new DefaultMutableTreeNode(villanos.get(i).getNombre() + " Villanos"));
+            for (int j = 0; j < villanos.get(i).getMiembro().size(); j++) {
+                DefaultMutableTreeNode per = (DefaultMutableTreeNode) raiz.getChildAt(i);
+                per.add(new DefaultMutableTreeNode(((Villanos) villanos.get(i).getMiembro().get(j)).getNombre()));
+                DefaultMutableTreeNode pod = (DefaultMutableTreeNode) per.getChildAt(j);
+                pod.add(new DefaultMutableTreeNode(((Villanos) villanos.get(i).getMiembro().get(j)).getDebilidad()));
+            }
+            m.reload();
+        }
+        
+    }//GEN-LAST:event_jButton5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -921,6 +957,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -966,5 +1003,6 @@ public class Main extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 ArrayList<Escuadrones> superheroes = new ArrayList();
 ArrayList<Escuadrones> villanos = new ArrayList();
+int cont=1;
 
 }
